@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#123c35">
+  <meta name="description" content="Local demonstration admin page for reviewing JAMB Practice payment requests.">
+  <title>Admin demo — JAMB Practice</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="account-store.js"></script>
+  <script src="admin.js" defer></script>
+</head>
+<body class="admin-page">
+  <header class="topbar">
+    <a class="brand" href="index.html" aria-label="JAMB Practice home">
+      <span class="brand-mark" aria-hidden="true">J</span>
+      <span>JAMB<span class="brand-light">Practice</span></span>
+    </a>
+    <a class="admin-home-link" href="index.html">← Back to practice</a>
+  </header>
+  <main class="admin-shell">
+    <section class="admin-intro">
+      <p class="eyebrow">PAYMENT REQUESTS</p>
+      <h1>Admin <span>demo</span></h1>
+      <p>Review usernames and PalmPay transfer references submitted in this browser.</p>
+    </section>
+
+    <aside class="admin-security-warning" role="alert">
+      <strong>Not secure for real users or payments</strong>
+      <p>This is a browser-only prototype. Password hashes and account records are stored in local browser storage, which users can edit or erase. There is no server, shared account database, trusted admin role, or payment verification. Do not use this to approve real money or collect real user passwords.</p>
+      <p>For a real service, use server-side authentication, role-protected admin endpoints, a database with access policies, and payment-provider verification.</p>
+    </aside>
+
+    <section class="admin-auth-card" id="admin-auth-card">
+      <div class="admin-auth-heading">
+        <span class="admin-lock" aria-hidden="true">⌑</span>
+        <div><h2 id="admin-auth-title">Set a demo admin password</h2><p id="admin-auth-help"></p></div>
+      </div>
+      <form class="account-form" id="admin-setup-form">
+        <label class="setup-field">Demo admin password<input id="admin-password" type="password" minlength="12" maxlength="128" autocomplete="new-password" required><small>At least 12 characters. This only gates this browser demo; it is not secure admin authentication.</small></label>
+        <label class="setup-field">Confirm password<input id="admin-password-confirm" type="password" minlength="12" maxlength="128" autocomplete="new-password" required></label>
+        <button class="button button-primary account-submit" type="submit">Set demo password</button>
+        <p class="account-message" id="admin-setup-message" aria-live="polite"></p>
+      </form>
+      <form class="account-form" id="admin-login-form" hidden>
+        <label class="setup-field">Demo admin password<input id="admin-login-password" type="password" maxlength="128" autocomplete="current-password" required></label>
+        <button class="button button-primary account-submit" type="submit">Unlock demo page</button>
+        <p class="account-message" id="admin-login-message" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section class="admin-dashboard" id="admin-dashboard" hidden>
+      <div class="admin-dashboard-heading">
+        <div><p class="eyebrow">LOCAL BROWSER DATA ONLY</p><h2>Signup & payment references</h2></div>
+        <button class="button button-quiet" id="admin-lock-button" type="button">Lock page</button>
+      </div>
+      <div class="admin-stats">
+        <div><strong id="admin-total">0</strong><span>profiles</span></div>
+        <div><strong id="admin-pending">0</strong><span>awaiting review</span></div>
+        <div><strong id="admin-approved">0</strong><span>approved (demo only)</span></div>
+      </div>
+      <div class="admin-table-wrap">
+        <table class="admin-table">
+          <thead><tr><th>Username</th><th>Payment reference</th><th>Submitted</th><th>Status</th><th>Review actions</th></tr></thead>
+          <tbody id="admin-users"></tbody>
+        </table>
+      </div>
+      <p class="admin-empty" id="admin-empty" hidden>No local demo profiles yet. Sign up in this browser to see a sample review request.</p>
+    </section>
+  </main>
+</body>
+</html>

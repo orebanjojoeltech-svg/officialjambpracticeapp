@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#123c35">
+  <meta name="description" content="Free JAMB-style practice questions with answers and explanations for five UTME subjects.">
+  <title>JAMB Practice — Learn. Practise. Succeed.</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="JAMB Practice home">
+      <span class="brand-mark" aria-hidden="true">J</span>
+      <span>JAMB<span class="brand-light">Practice</span></span>
+    </a>
+    <div class="topbar-actions"><div class="topbar-note"><span class="live-dot"></span> Your personal study space</div><button class="account-button" id="account-button" type="button">Create account</button><button class="upgrade-button" id="upgrade-button" type="button">Go Premium <span aria-hidden="true">↗</span></button></div>
+  </header>
+
+  <main class="page">
+    <section class="intro">
+      <div class="intro-copy">
+        <p class="eyebrow">UTME PREPARATION · 2010–2025 SYLLABUS COVERAGE</p>
+        <h1>Small steps.<br><span>Big results.</span></h1>
+        <p class="intro-text">Build your exam readiness with focused practice, flexible timed sessions, and clear explanations across five UTME subjects.</p>
+      </div>
+      <div class="intro-art" aria-hidden="true">
+        <div class="art-sun"></div><div class="art-book">✦</div>
+        <div class="art-leaf leaf-one"></div><div class="art-leaf leaf-two"></div>
+        <span class="art-spark spark-one">✳</span><span class="art-spark spark-two">✦</span>
+      </div>
+    </section>
+
+    <section class="subject-section" aria-labelledby="subject-heading">
+      <div class="section-heading">
+        <div><p class="eyebrow">CHOOSE A SUBJECT</p><h2 id="subject-heading">What are we studying today?</h2></div>
+        <span class="subject-count">5 subjects</span>
+      </div>
+      <div class="subject-grid" id="subject-list" role="group" aria-label="Choose a subject"></div>
+    </section>
+
+    <section class="setup-card" aria-labelledby="setup-heading">
+      <div class="setup-heading">
+        <div><p class="eyebrow">MAKE IT YOURS</p><h2 id="setup-heading">Set up your practice</h2></div>
+        <span class="bank-availability" id="bank-availability">15 questions available</span>
+      </div>
+      <div class="setup-controls">
+        <label class="setup-field">Number of questions
+          <input id="question-count" type="number" min="5" max="1000" step="1" value="5" inputmode="numeric">
+          <small>Choose 5–1,000. Your selected subject and level must have enough questions.</small>
+        </label>
+        <label class="setup-field">Time limit
+          <div class="input-suffix"><input id="time-limit" type="number" min="1" max="180" step="1" value="15" inputmode="numeric"><span>minutes</span></div>
+          <small>Set a focused session from 1 to 180 minutes.</small>
+        </label>
+        <label class="setup-field">Difficulty
+          <select id="difficulty">
+            <option value="mixed">Mixed difficulty</option>
+            <option value="easy">Easy</option>
+            <option value="moderate">Moderate</option>
+            <option value="difficult">Difficult</option>
+          </select>
+          <small>Choose a level or practise a balanced mix.</small>
+        </label>
+        <button class="button button-primary start-button" id="start-button" type="button">Start practice <span aria-hidden="true">→</span></button>
+      </div>
+      <p class="setup-message" id="setup-message" aria-live="polite"></p>
+    </section>
+
+    <section class="practice-layout" aria-label="Practice questions">
+      <aside class="progress-card">
+        <p class="eyebrow">YOUR SESSION</p>
+        <div class="progress-top"><span id="session-subject">Physics</span><span id="progress-label">1 / 5</span></div>
+        <div class="progress-track" role="progressbar" aria-label="Question progress" aria-valuemin="0" aria-valuemax="5" aria-valuenow="1" id="progress-bar"><span id="progress-fill"></span></div>
+        <div class="timer-box"><span class="timer-icon" aria-hidden="true">◷</span><div><small>TIME LEFT</small><strong id="timer-display">15:00</strong></div></div>
+        <div class="score-box"><span class="score-icon" aria-hidden="true">✓</span><div><strong id="score-value">0</strong><small>correct so far</small></div></div>
+        <div class="question-nav-wrap"><p class="nav-label">QUESTIONS</p><div class="question-nav" id="question-nav" aria-label="Jump to question"></div></div>
+        <p class="session-tip"><span aria-hidden="true">✦</span> Take your time. Understanding matters more than speed.</p>
+      </aside>
+
+      <article class="question-card" id="question-card">
+        <section class="practice-gate" id="practice-gate">
+          <span class="results-icon" aria-hidden="true">✦</span>
+          <p class="eyebrow">YOUR NEXT STEP</p>
+          <h2 id="practice-gate-heading">Create an account to begin.</h2>
+          <p id="practice-gate-message">Create a browser-local demo profile before starting practice. Choose your session settings above, then start when you're ready.</p>
+          <button class="button button-primary" id="gate-account-button" type="button">Create your account</button>
+        </section>
+        <div id="question-content">
+          <div class="question-meta"><span class="topic-pill" id="topic-label">Mechanics</span><span class="question-number" id="question-number">QUESTION 01</span></div>
+          <h2 id="question-text"></h2>
+          <div class="passage" id="passage" hidden></div>
+          <fieldset class="answer-options" id="answer-options">
+            <legend class="sr-only">Choose your answer</legend>
+          </fieldset>
+          <div class="feedback" id="feedback" aria-live="polite" hidden></div>
+          <div class="question-actions">
+            <button class="button button-quiet" id="back-button" type="button">← Previous</button>
+            <button class="button button-primary" id="check-button" type="button">Check answer <span aria-hidden="true">→</span></button>
+            <button class="button button-primary" id="next-button" type="button" hidden>Next question <span aria-hidden="true">→</span></button>
+            <button class="button button-quiet finish-button" id="finish-button" type="button">Finish session</button>
+          </div>
+        </div>
+        <section class="results-panel" id="results-panel" hidden aria-live="polite">
+          <span class="results-icon" aria-hidden="true">✦</span>
+          <p class="eyebrow">SESSION COMPLETE</p>
+          <h2 id="results-heading">Nice work.</h2>
+          <p id="results-summary"></p>
+          <button class="button button-primary" type="button" id="results-setup-button">Set up another session</button>
+        </section>
+      </article>
+    </section>
+    <p class="disclaimer">These are original practice questions on commonly taught UTME syllabus topics, not official JAMB questions or a year-by-year archive. The current question bank is limited; larger session sizes are available only as more reviewed questions are added.</p>
+  </main>
+  <footer><span>Made for your next big step.</span><span><a class="admin-demo-link" href="admin.html">Admin demo</a> · Keep learning, keep going <span class="footer-star">✦</span></span></footer>
+  <dialog class="account-dialog" id="account-dialog" aria-labelledby="account-title">
+    <form method="dialog" class="account-close-form"><button class="dialog-close" aria-label="Close account window">×</button></form>
+    <div class="premium-badge">YOUR STUDY PROFILE</div>
+    <h2 id="account-title">Create your account</h2>
+    <p class="account-intro">Choose a username to identify your study profile. If you paid for Premium, enter the PalmPay transfer reference so it can be matched during manual review.</p>
+    <div class="account-warning"><strong>Prototype notice</strong><span>Accounts are stored only in this browser. This static demo is not secure for real passwords or payment records. Do not reuse a password or enter sensitive financial information.</span></div>
+    <div class="account-tabs" role="tablist" aria-label="Account options">
+      <button class="account-tab is-active" id="account-mode-signup" type="button" role="tab" aria-selected="true">Create account</button>
+      <button class="account-tab" id="account-mode-signin" type="button" role="tab" aria-selected="false">Sign in</button>
+    </div>
+    <form id="account-form" class="account-form">
+      <label class="setup-field">Username<input id="account-username" name="username" minlength="3" maxlength="24" autocomplete="username" required pattern="[A-Za-z0-9_-]+" title="Use 3–24 letters, numbers, underscores or hyphens."><small>3–24 letters, numbers, underscores or hyphens.</small></label>
+      <label class="setup-field">Password<input id="account-password" name="password" type="password" minlength="10" maxlength="128" autocomplete="new-password" required><small>Use at least 10 characters. Never reuse an important password here.</small></label>
+      <label class="setup-field">Confirm password<input id="account-password-confirm" name="confirmPassword" type="password" minlength="10" maxlength="128" autocomplete="new-password" required></label>
+      <label class="setup-field">PalmPay payment reference <span class="optional-label">Optional</span><input id="payment-reference" name="paymentReference" maxlength="80" autocomplete="off"><small>Only enter the transfer reference, not your PIN, password, OTP, or account number.</small></label>
+      <button class="button button-primary account-submit" type="submit">Create profile</button>
+      <p class="account-message" id="account-message" aria-live="polite"></p>
+    </form>
+    <form id="signin-form" class="account-form" hidden>
+      <label class="setup-field">Username<input id="signin-username" name="username" maxlength="24" autocomplete="username" required></label>
+      <label class="setup-field">Password<input id="signin-password" name="password" type="password" maxlength="128" autocomplete="current-password" required></label>
+      <button class="button button-primary account-submit" type="submit">Sign in</button>
+      <p class="account-message" id="signin-message" aria-live="polite"></p>
+    </form>
+    <section class="account-status" id="account-status" hidden>
+      <div class="status-chip" id="account-status-chip">Signed in</div>
+      <p id="account-status-text"></p>
+      <button class="button button-quiet" id="account-signout" type="button">Sign out</button>
+    </section>
+  </dialog>
+  <dialog class="premium-dialog" id="premium-dialog" aria-labelledby="premium-title">
+    <form method="dialog"><button class="dialog-close" aria-label="Close premium details">×</button></form>
+    <div class="premium-badge">✦ YOUR NEXT-LEVEL STUDY PLAN</div>
+    <h2 id="premium-title">A calmer, more focused way to prepare.</h2>
+    <p class="premium-description">Premium membership is <strong>₦1,000 per month.</strong> Designed to make every study session count.</p>
+    <ul class="premium-benefits">
+      <li><span>✓</span><div><strong>Focused practice sessions</strong><small>Choose a subject, difficulty, question count, and time.</small></div></li>
+      <li><span>✓</span><div><strong>Learn from every answer</strong><small>Review explanations and keep track of your score.</small></div></li>
+      <li><span>✓</span><div><strong>Built for steady progress</strong><small>Study at your pace with a clean, distraction-free experience.</small></div></li>
+    </ul>
+    <div class="payment-card">
+      <p class="payment-label">PAYMENT DETAILS</p>
+      <div class="payment-row"><span>Bank / wallet</span><strong>PalmPay</strong></div>
+      <div class="payment-row"><span>Account number</span><strong class="account-number">7035416258</strong></div>
+      <div class="payment-row"><span>Account name</span><strong>Adenike Orebanjo</strong></div>
+      <div class="payment-row payment-amount"><span>Amount</span><strong>₦1,000 / month</strong></div>
+    </div>
+    <p class="payment-notice">Transfer ₦1,000 to the PalmPay account above, then contact the site owner with your payment reference and the email or username you use on this site. Access is activated only after the owner manually verifies the transfer. Never share your PIN, password, or one-time code, and do not pay unless the recipient name matches.</p>
+    <p class="security-note">Secure paid access requires a server-side payment provider and account verification. This demonstration page does not process payments or protect premium content.</p>
+    <form method="dialog"><button class="button button-primary dialog-done">Got it</button></form>
+  </dialog>
+  <div class="dialog-backdrop" id="dialog-backdrop" hidden></div>
+  <script src="account-store.js"></script>
+</body>
+</html>
